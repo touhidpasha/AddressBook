@@ -1,4 +1,7 @@
-
+class Contact{
+    public String firstname,lastname,city,address,state;
+    public int number,zip;
+}
 
 public class AddressBookMain{
     public static void main(String args[]){
