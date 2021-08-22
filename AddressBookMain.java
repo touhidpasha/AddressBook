@@ -54,6 +54,7 @@ public class AddressBookMain{
         while(true){
             System.out.println("press 1 to add new contact");
             System.out.println("press 2 to edit new contact");
+            System.out.println("press 3 to delete contact");
             flag =sc.nextInt();
             if(flag==1)
             {
@@ -61,7 +62,7 @@ public class AddressBookMain{
                 contact[count].addContact();
                 count++;
             }
-            else {
+            else if(flag==2) {
                 System.out.println("enter name for editing");
                 for(int i=0;i<count;i++)
                 {
@@ -76,6 +77,30 @@ public class AddressBookMain{
                 }
                 contact[i].editContact();
             }
+            else{
+
+                System.out.println("enter name for deleting");
+                for(int i=0;i<count;i++)
+                {
+                    System.out.println(contact[i].firstname);   
+                }
+                tempName =sc.next();
+                int i;
+                for(i=0;i<count;i++)
+                {
+                    if(contact[i].firstname.equals(tempName))
+                    break; 
+                }
+                int j;
+                for(j=i;j<count-1;j++)
+                {
+                    contact[j]=contact[j+1];
+                    
+                }
+                contact[++j]=null;
+
+            }
+            
 
         }
         
