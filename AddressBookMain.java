@@ -51,7 +51,7 @@ public class AddressBookMain{
 
         Contact contact[]=new Contact[20];
 
-        while(true){
+        while(true){                                                    //this infinite loop will help in adding multipe persons details
             System.out.println("press 1 to add new contact");
             System.out.println("press 2 to edit new contact");
             System.out.println("press 3 to delete contact");
