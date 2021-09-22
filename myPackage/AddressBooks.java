@@ -23,7 +23,19 @@ public class AddressBooks {
 	public AddressBooks() {
 		System.out.println("Welcome to address book program"); // welcome message
 	}
+	
+	//method for searching a person in by city or state
+	public void search(String place) {
 
+        for (int j=0;j<person.size();j++)
+        {   
+            AddressBooks object=person.get(j);
+            if(object.city.equals(place)||object.state.equals(place))
+            {
+                System.out.println(object.firstname+" "+object.lastname);  
+            }
+        }
+	}
 	//  constructors initialized during object creation
 	public AddressBooks(String firstname, String lastname, String address, String city, String state, String zip,
 			String number, String email) {
