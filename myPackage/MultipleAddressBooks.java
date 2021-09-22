@@ -51,7 +51,7 @@ public class MultipleAddressBooks{
 
         while (true) {
             System.out.println(
-                    "Enter your choice ,by entering below numbers\n1.add contact\n2.edit contact\n3.Delete contact\n4.Display contact\n5.Display addressbook\n6.Create another address book\n7.exit\n8.seach people from by place name\n"); // options
+                    "Enter your choice ,by entering below numbers\n1.add contact\n2.edit contact\n3.Delete contact\n4.Display contact\n5.Display addressbook\n6.Create another address book\n7.exit\n8.seach people from,by place name\n9.count persons by place\n"); // options
                                                                                                                                                                                                                                             // for
                                                                                                                                                                                                                                             // different
                                                                                                                                                                                                                                             // operations
@@ -75,6 +75,16 @@ public class MultipleAddressBooks{
                 for (Map.Entry<String, AddressBooks> entry : multipleAddressBook.entrySet()) {
                     AddressBooks object1 = entry.getValue();
                     object1.search(place);
+                }
+
+            }
+            else if (choice == 9) {
+                System.out.println("Enter the name of city or state");
+                String place = sc.next();
+                System.out.println("Persons whose state or city is " + place);
+                for (Map.Entry<String, AddressBooks> entry : multipleAddressBook.entrySet()) {
+                    AddressBooks object1 = entry.getValue();
+                    object1.countByPlace(place);
                 }
 
             } else {

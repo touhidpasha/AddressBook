@@ -36,6 +36,20 @@ public class AddressBooks {
             }
         }
 	}
+	public void countByPlace(String place) {
+		int count=0;
+        for (int j=0;j<person.size();j++)
+        {   
+            AddressBooks object=person.get(j);
+            if(object.city.equals(place)||object.state.equals(place))
+            {
+                 
+				count++;
+            }
+        }
+		System.out.println("number of persons from "+place+" are "+count); 
+	}
+
 	//  constructors initialized during object creation
 	public AddressBooks(String firstname, String lastname, String address, String city, String state, String zip,
 			String number, String email) {
