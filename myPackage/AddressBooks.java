@@ -5,6 +5,14 @@ import java.util.Scanner;
 import java.util.stream.*;
 import java.util.*;
 import java.util.function.Predicate;
+//import java.awt.List;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.*;
+import java.nio.file.*;
+import java.util.Scanner;
 
 public class AddressBooks {
 	public ArrayList<AddressBooks> person = new ArrayList<AddressBooks>(); // collection class
@@ -83,8 +91,8 @@ public class AddressBooks {
 			phoneNumber = sc.next();
 			System.out.println("E-mail:");
 			email = sc.next();
-			person.add(new AddressBooks(firstName, lastName, address, city, state, zip, phoneNumber, email)); // object
-																												// creation
+			person.add(new AddressBooks(firstName, lastName, address, city, state, zip, phoneNumber, email)); // object creation
+			writeDataToFile();
 		} else {
 			System.out.println("this contact already exist");
 		}
@@ -215,7 +223,80 @@ public class AddressBooks {
 	}
 
 	public String toString() {
-		return "Firstname: " + firstName + "\n" + "Lastname: " + lastName + "\n" + "Address: " + address + "\n"
-				+ "City :" + city + "\n" + "State: " + state;
+		return "Firstname: " + firstName + " " + "Lastname: " + lastName + " " + "Address: " + address + " "
+				+ "City :" + city + " " + "State: " + state +"\n";
+	}
+	public void writeDataToFile(){
+		
+		try
+        {
+  
+
+			FileWriter fw = new FileWriter("/home/touhidpasha/Desktop/newDirectory/data.txt", true);
+		    BufferedWriter bw = new BufferedWriter(fw);
+            String data=toString();
+
+		    bw.write(data);
+		    bw.newLine();
+		    bw.close();
+
+           
+          
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    
+	}
+
+	public void readDataFromFile() {
+		int count = -1;
+		try {
+			Path path = Paths.get("/home/touhidpasha/Desktop/newDirectory/data.txt");
+			java.util.List<String> data = Files.readAllLines(path);
+
+			for (String line : data) {
+				count++;
+				System.out.println(line);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("number of entries are " + count);// printing number of entries
+	}
+
+	public void createDirectoryAndTextFile() {
+
+		try {
+			Path path = Paths.get("/home/touhidpasha/Desktop/newDirectory");// creating directory
+			Path p;
+			p = Files.createDirectory(path);
+			System.out.println("Directory has been created at " + p.toString());
+
+			Path path1 = Paths.get("/home/touhidpasha/Desktop/newDirectory/data.txt");// creating
+			// file in
+			// above
+			// directory
+			Path p1 = Files.createFile(path1);
+			System.out.println("File has been created at " + p1.toString());
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		String dirName = "/home/touhidpasha/Desktop/newDirectory";
+
+		try {
+			System.out.println("list of  files are");
+			Files.list(new File(dirName).toPath()).forEach(path -> {
+				System.out.println(path);
+			});
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }

@@ -53,7 +53,7 @@ public class MultipleAddressBooks {
 
         while (true) {
             System.out.println(
-                    "Enter your userChoice ,by entering below numbers\n1.add contact\n2.editContact contact\n3.Delete contact\n4.Display contact\n5.Display addressbook\n6.Create another address book\n7.exit\n8.seach people from,by place name\n9.count persons by place\n10.Sort by names \n11.Sort by City or State or zip\n"); // options
+                    "Enter your userChoice ,by entering below numbers\n1.add contact\n2.editContact contact\n3.Delete contact\n4.Display contact\n5.Display addressbook\n6.Create another address book\n7.exit\n8.seach people from,by place name\n9.count persons by place\n10.Sort by names \n11.Sort by City or State or zip\n12.to create new directory and text fiel within the same directory\n13.to read data from file\n"); // options
             // for
             // different
             // operations
@@ -106,7 +106,17 @@ public class MultipleAddressBooks {
                     System.out.println(checkEntry.getKey() + " details:");
                     tempObject.sortByCityStateZip(option);
                 }
-            } else {
+            }
+            else if(userChoice==12){
+                AddressBooks object1 = new AddressBooks(); //
+                object1.createDirectoryAndTextFile();
+            }
+            else if(userChoice==13){
+                AddressBooks object1 = new AddressBooks(); //
+                object1.readDataFromFile();
+            }
+          
+             else {
                 System.out.println("Enter the addressbook where you want to insert or modify the  contact!!");
                 tempStr = sc.next();
                 userChoice(userChoice, multipleAddressBook.get(tempStr)); // to perform required operation on desired address book
